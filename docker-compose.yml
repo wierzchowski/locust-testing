@@ -1,18 +1,35 @@
 version: "3.4"
 
 services:
+  locust_single:
+    build:
+      context: .
+    container_name: locust_single
+    environment:
+      LOCUST_MASTER_HOST: "${LOCUST_MASTER_HOST}"
+    ports:
+      - 80:8089
+      - 5557:5557
+    command: locust
+
   locust_master:
     build:
       context: .
-    container_name: locustio_master
+    container_name: locust_master
+    environment:
+      LOCUST_MASTER_HOST: "${LOCUST_MASTER_HOST}"
     ports:
       - 80:8089
+      - 5557:5557
     command: locust --master
 
   locust_slave:
     build:
       context: .
-    container_name: locustio_slave
+    container_name: locust_slave
+    environment:
+      LOCUST_MASTER_HOST: "${LOCUST_MASTER_HOST}"
     ports:
       - 8089:8089
-    command: locust --master-host=${LOCUST_TARGET_HOST}
+      - 5557:5557
+    command: locust --slave --master-host="$LOCUST_MASTER_HOST"

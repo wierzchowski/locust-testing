@@ -1,3 +1,5 @@
+import uuid
+
 from locust import TaskSet, task, between
 from locust.contrib.fasthttp import FastHttpLocust
 
@@ -5,7 +7,7 @@ from locust.contrib.fasthttp import FastHttpLocust
 class MyTaskSet(TaskSet):
     @task
     def index(self):
-        self.client.get("/asdf")
+        self.client.post("/dynamodb", data={'uuid': str(uuid.uuid4())})
 
 
 class MyLocust(FastHttpLocust):

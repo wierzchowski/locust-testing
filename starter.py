@@ -9,6 +9,7 @@ SECURITY_GROUPS = ['sg-110a6a70']
 
 
 ec2 = boto3.resource('ec2')
+client = boto3.client('ec2')
 
 instances = ec2.create_instances(
      ImageId=IMAGE_ID,
