@@ -5,7 +5,7 @@ IMAGE_ID = "ami-0b418580298265d5c"  # UBUNTU 18.04 LTS
 INSTANCES_COUNT = 2
 INSTANCE_TYPE = "t2.micro"
 KEYPAIR_NAME = "keypair-fastapi"
-SECURITY_GROUPS = ['sg-110a6a70']
+SECURITY_GROUPS = ['sg-dcbf70ba']
 
 
 ec2 = boto3.resource('ec2')

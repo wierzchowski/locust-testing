@@ -7,7 +7,7 @@ from locust.contrib.fasthttp import FastHttpLocust
 class MyTaskSet(TaskSet):
     @task
     def index(self):
-        self.client.post("/dynamodb", data={'uuid': str(uuid.uuid4())})
+        self.client.post("/dynamodb-asynch", data={'uuid': str(uuid.uuid4())})
 
 
 class MyLocust(FastHttpLocust):
