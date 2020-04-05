@@ -13,4 +13,4 @@ class MyTaskSet(TaskSet):
 
 class MyLocust(FastHttpLocust):
     task_set = MyTaskSet
-    wait_time = between(0.01, 0.01)
+    wait_time = between(0.001, 0.001)
